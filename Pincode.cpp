@@ -12,9 +12,8 @@ Pincode::Pincode(Adafruit_SSD1306 *the_display, Encoder *the_enc,
 	this->display = the_display;
 	this->myEnc = the_enc;
 	this->button = the_button;
-	//display->clearDisplay();
 
-	pinMode(button, INPUT_PULLUP);           // set pin to input
+	//pinMode(button, INPUT_PULLUP);           // set pin to input
 
 	display->setTextColor(WHITE);
 	display->setFont(&FreeSans24pt7b);
@@ -24,12 +23,11 @@ Pincode::Pincode(Adafruit_SSD1306 *the_display, Encoder *the_enc,
 void Pincode::reqPin(byte pin[]) {
 
 	long newPosition = myEnc->read() / 2;
-	float value;
+	long value;
 	long lastValue = -1;
 	byte pinPos = 0;
 	byte number;
-	randNumber = int(random(10)) * 100
-			- (int((newPosition % 1000) * dialSpeed) % 100);
+	randNumber = random(10) * 100 - (((newPosition % 1000) * dialSpeed) % 100);
 
 	while (true) {
 
@@ -37,12 +35,14 @@ void Pincode::reqPin(byte pin[]) {
 		if (newPosition < 0) {
 			newPosition = (1000 + newPosition);
 		}
-		value = int((newPosition * dialSpeed) + randNumber) % 1000;
+		value = ((newPosition * dialSpeed) + randNumber) % 1000;
 
 		if (lastValue != value) {
 			lastValue = value;
+
 			display->clearDisplay();
-			draw3Nums(32 * pinPos + 2, 48, 40, 8, (int) value);
+
+			draw3Nums(32 * pinPos + 2, 48, 40, 8, value);
 			drawRects(pinPos);
 
 			display->display();
@@ -59,15 +59,14 @@ void Pincode::reqPin(byte pin[]) {
 				pinPos++;
 			}
 
-			randNumber = int(random(10)) * 100
-					- (int(newPosition * dialSpeed) % 100);
+			randNumber = random(10) * 100
+					- ((newPosition * dialSpeed) % 100);
 			int old_value = value;
-			value = int(((newPosition * dialSpeed) + randNumber)) % 1000;
+			value = ((newPosition * dialSpeed) + randNumber) % 1000;
 			int step = (old_value - value) / 32;
 			for (int i = 0; i < 32; i++) {
 				display->clearDisplay();
-				draw3Nums(32 * (pinPos - 1) + 2 + i, 48, 40, 8,
-						(old_value - i * step) % 1000);
+				draw3Nums(32 * (pinPos - 1) + 2 + i, 48, 40, 8, (old_value - i * step) % 1000);
 				drawRects(pinPos - 1);
 
 				display->display();
@@ -172,7 +171,6 @@ void Pincode::draw3Nums(int x, int y, int height, int padding, int value) {
 	}
 	display->setCursor(x, y + pos - height);
 	display->print((num + 1) % 10);
-
 }
 
 void Pincode::setRandomSeed(int seed) {

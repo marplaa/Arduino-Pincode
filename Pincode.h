@@ -8,8 +8,6 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <Fonts/FreeSans24pt7b.h>
-#include <Fonts/FreeSans12pt7b.h>
-
 
 #include <Crypto.h>
 #include <SHA256.h>
@@ -28,14 +26,14 @@ public:
 private:
 	Adafruit_SSD1306 *display;
 	Encoder *myEnc;
-	float dialSpeed = 25;
+	byte dialSpeed = 20;
 
 	int randNumber = 0;//= int(random(10)) * 100 - ((analogRead(A0) * dialSpeed) % 100);
 	int xpos0 = 96;
 	int ypos0 = 40;
 	const int FILL_RECTANGLE = 0;
 	const int FILL_CIRCLE = 1;
-	int symbol = FILL_CIRCLE;
+	//int symbol = FILL_CIRCLE;
 	int button;
 	void drawRects(int filled);
 	void draw3Nums(int x, int y, int height, int padding, int value);
