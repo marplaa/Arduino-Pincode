@@ -1,8 +1,10 @@
-## Welcome to GitHub Pages
+## Pincode library for rotary encoders
 
-You can use the [editor on GitHub](https://github.com/marplaa/Arduino-Pincode/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+This Arduino library provides a way to ask a user for a 4-digit pincode. The code is entered by turning a rotary encoder. The start point of each digit is randomised, so that there is an additional layer of security e.g. no one can extrapolate the pin by observing the movements of the encoder.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+The library is based on the [Adafruit library for SSD1306 displays](https://github.com/adafruit/Adafruit_SSD1306) and the [Encoder library from Paul Stoffregen](https://github.com/PaulStoffregen/Encoder)
+
+For now it only supports a 128x64 pixel SSD1306 OLED dissplay.
 
 ### Markdown
 
