@@ -10,17 +10,19 @@
 #include <Fonts/FreeSans24pt7b.h>
 #include <Fonts/FreeSans12pt7b.h>
 
+
 #include <Crypto.h>
 #include <SHA256.h>
 #include <string.h>
+
 
 class Pincode {
 public:
 	Pincode(Adafruit_SSD1306 *display, Encoder *the_enc, int the_button);
 	void reqPin(byte pin[]);
+
 	boolean requestPinHash(byte hash[]);
 	void setRandomSeed(int seed);
-	void setSymbol(int sym);
 	void setDialSpeed(float speed);
 
 private:
@@ -35,7 +37,7 @@ private:
 	const int FILL_CIRCLE = 1;
 	int symbol = FILL_CIRCLE;
 	int button;
-	void drawRects(int filled, int type);
+	void drawRects(int filled);
 	void draw3Nums(int x, int y, int height, int padding, int value);
 };
 

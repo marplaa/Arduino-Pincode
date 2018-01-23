@@ -12,16 +12,13 @@ Pincode::Pincode(Adafruit_SSD1306 *the_display, Encoder *the_enc,
 	this->display = the_display;
 	this->myEnc = the_enc;
 	this->button = the_button;
-	display->clearDisplay();
+	//display->clearDisplay();
 
 	pinMode(button, INPUT_PULLUP);           // set pin to input
 
 	display->setTextColor(WHITE);
-	display->setTextSize(1);
-	display->setTextWrap(false);
 	display->setFont(&FreeSans24pt7b);
 }
-
 
 
 void Pincode::reqPin(byte pin[]) {
@@ -43,14 +40,10 @@ void Pincode::reqPin(byte pin[]) {
 		value = int((newPosition * dialSpeed) + randNumber) % 1000;
 
 		if (lastValue != value) {
-			Serial.print("Value: ");
-			Serial.println(value);
-			Serial.print("Pos: ");
-			Serial.println(newPosition);
 			lastValue = value;
 			display->clearDisplay();
 			draw3Nums(32 * pinPos + 2, 48, 40, 8, (int) value);
-			drawRects(pinPos, this->symbol);
+			drawRects(pinPos);
 
 			display->display();
 		}
@@ -75,16 +68,18 @@ void Pincode::reqPin(byte pin[]) {
 				display->clearDisplay();
 				draw3Nums(32 * (pinPos - 1) + 2 + i, 48, 40, 8,
 						(old_value - i * step) % 1000);
-				drawRects(pinPos - 1, this->symbol);
+				drawRects(pinPos - 1);
 
 				display->display();
 			}
-			drawRects(pinPos, this->symbol);
+			drawRects(pinPos);
 			display->display();
 		}
 
 	}
 }
+
+
 
 boolean Pincode::requestPinHash(byte hash[]) {
 
@@ -107,13 +102,15 @@ boolean Pincode::requestPinHash(byte hash[]) {
 
 }
 
-void Pincode::drawRects(int filled, int type) {
+
+void Pincode::drawRects(int filled) {
 	display->drawRoundRect(0, 12, 30, 42, 4, WHITE);
 	display->drawRoundRect(32, 12, 30, 42, 4, WHITE);
 	display->drawRoundRect(64, 12, 30, 42, 4, WHITE);
 	display->drawRoundRect(96, 12, 30, 42, 4, WHITE);
 
-	if (type == FILL_RECTANGLE) {
+#ifdef FILL_RECTANGLE
+	//if (type == FILL_RECTANGLE) {
 
 		if (filled >= 1) {
 			display->fillRoundRect(2, 14, 26, 38, 3, WHITE);
@@ -124,7 +121,9 @@ void Pincode::drawRects(int filled, int type) {
 		if (filled == 3) {
 			display->fillRoundRect(66, 14, 26, 38, 3, WHITE);
 		}
-	} else if (type == FILL_CIRCLE) {
+
+#else
+	//} else if (type == FILL_CIRCLE) {
 		if (filled >= 1) {
 			display->fillCircle(15, 32, 4, WHITE);
 		}
@@ -134,8 +133,8 @@ void Pincode::drawRects(int filled, int type) {
 		if (filled == 3) {
 			display->fillCircle(79, 32, 4, WHITE);
 		}
-
-	}
+#endif
+	//}
 	display->drawLine(0, 11, 128, 11, BLACK);
 	display->drawLine(0, 10, 128, 10, BLACK);
 	display->drawLine(0, 54, 128, 54, BLACK);
@@ -178,10 +177,6 @@ void Pincode::draw3Nums(int x, int y, int height, int padding, int value) {
 
 void Pincode::setRandomSeed(int seed) {
 	randomSeed(seed);
-}
-
-void Pincode::setSymbol(int sym) {
-	this->symbol = sym;
 }
 
 void Pincode::setDialSpeed(float speed) {
