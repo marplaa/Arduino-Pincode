@@ -1,0 +1,5 @@
+Pincode	KEYWORD1
+reqPin	KEYWORD2
+requestPinHash	KEYWORD2
+setSymbol	KEYWORD2
+setDialSpeed	KEYWORD2
