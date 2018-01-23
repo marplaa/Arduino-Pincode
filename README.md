@@ -4,36 +4,8 @@ This Arduino library provides a way to ask a user for a 4-digit pincode. The cod
 
 The library is based on the [Adafruit library for SSD1306 displays](https://github.com/adafruit/Adafruit_SSD1306) and the [Encoder library from Paul Stoffregen](https://github.com/PaulStoffregen/Encoder)
 
-For now it only supports a 128x64 pixel SSD1306 OLED dissplay.
+The library also supports SHA256 hashing through the [crypto library from Southern Storm Software]( https://github.com/rweather/arduinolibs/tree/master/libraries/Crypto), so that the pin is not stored in plaintext.
 
-### Markdown
+For now it only supports a 128x64 pixel SSD1306 OLED display.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/marplaa/Arduino-Pincode/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+A minimal plaintext variant uses approximately 24.500 bytes of flash, so there is not much room for your own code if you use a ATMEGA32 based Arduino e.g. Arduino Uno.
