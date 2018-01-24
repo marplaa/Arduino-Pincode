@@ -70,6 +70,8 @@ void loop() {
 }
 ```
 
+![Example circuit](https://github.com/marplaa/Pincode/raw/master/docs/Pincode_example_1.png)
+
 ## TODO
 
 * Support for other display sizes and types
