@@ -26,7 +26,7 @@ void loop() {
   boolean ok = true;
 
   // (Optional) A floating A0 as input for the RNG
-  pincode.setRandomSeed(analogRead(A0));
+  randomSeed(analogRead(A0));
 
   // let the user enter the pin
   pincode.reqPin(inputPin);

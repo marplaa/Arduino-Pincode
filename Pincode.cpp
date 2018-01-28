@@ -173,9 +173,9 @@ void Pincode::draw3Nums(int x, int y, int height, int padding, int value) {
 	display->print((num + 1) % 10);
 }
 
-void Pincode::setRandomSeed(int seed) {
-	randomSeed(seed);
-}
+//void Pincode::setRandomSeed(int seed) {
+//	randomSeed(seed);
+//}
 
 void Pincode::setDialSpeed(float speed) {
 	this->dialSpeed = speed;

@@ -20,7 +20,7 @@ public:
 	void reqPin(byte pin[]);
 
 	boolean requestPinHash(byte hash[]);
-	void setRandomSeed(int seed);
+//	void setRandomSeed(int seed);
 	void setDialSpeed(float speed);
 
 private:
