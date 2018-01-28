@@ -10,7 +10,7 @@ The library also supports SHA256 hashing through the [crypto library from Southe
 
 For now it only supports a 128x64 pixel [SSD1306 OLED display](https://learn.adafruit.com/monochrome-oled-breakouts/arduino-library-and-examples) over SPI.
 
-A minimal plaintext variant uses approximately 24.500 bytes of flash, so there is not much room for your own code if you use a ATMEGA32 based Arduino e.g. Arduino Uno.
+A minimal plaintext variant uses approximately 24.500 bytes of flash, so there is not much room for your own code if you use an ATMEGA32 based Arduino e.g. Arduino Uno.
 
 ## Usage
 
