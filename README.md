@@ -4,7 +4,7 @@ Pincode library for rotary encoders
 
 This Arduino library provides a way to ask a user for a 4-digit pincode on a SSD1306 128x64 px SPI Display. The code is entered by turning a rotary encoder. The start point of each digit is randomised, so that there is an additional layer of security e.g. no one can extrapolate the pin by observing the movements of the encoder.
 
-The library is based on the [Adafruit library for SSD1306 displays](https://github.com/adafruit/Adafruit_SSD1306) and the [Encoder library from Paul Stoffregen](https://github.com/PaulStoffregen/Encoder)
+The library is based on the [Adafruit library for SSD1306 displays](https://github.com/adafruit/Adafruit_SSD1306) and the [Encoder library of Paul Stoffregen](https://github.com/PaulStoffregen/Encoder)
 
 The library also supports SHA256 hashing through the [crypto library from Southern Storm Software]( https://github.com/rweather/arduinolibs/tree/master/libraries/Crypto), so that the pin is not stored in plaintext.
 
