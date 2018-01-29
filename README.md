@@ -19,11 +19,11 @@ A minimal plaintext variant uses approximately 24.500 bytes of flash, so there i
 #include <Adafruit_SSD1306.h>
 #include <Encoder.h>
 
-#define OLED_DC     5
+#define OLED_DC     3
 #define OLED_CS     2
-#define OLED_RESET  15
+#define OLED_RESET  4
 
-#define BUTTON      4
+#define BUTTON      6
 #define ENCODER_1   20
 #define ENCODER_2   21
 
