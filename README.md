@@ -1,6 +1,8 @@
 Pincode library for rotary encoders
 =======
-![](docs/Display_screenshot_01_small.jpg)
+
+[![Pincode example](docs/Thumbnail.png)](https://youtu.be/sDqXEvIP3ns)
+
 
 This Arduino library provides a way to ask a user for a 4-digit pincode on a SSD1306 128x64 px SPI Display. The code is entered by turning a rotary encoder. The start point of each digit is randomised, so that there is an additional layer of security e.g. no one can extrapolate the pin by observing the movements of the encoder.
 
